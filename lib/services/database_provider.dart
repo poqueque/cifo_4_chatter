@@ -14,8 +14,9 @@ class DatabaseProvider extends ChangeNotifier {
 
   loadMessage() {
     final docRef = db.collection('chats').doc('room1').collection('messages');
-    docRef.orderBy('dateTime').snapshots().listen((event) {
+    docRef.snapshots().listen((event) {
       messages = event.docs.map((e) => Message.fromFirestore(e, null)).toList();
+      messages.sort();
       notifyListeners();
     });
   }
@@ -24,6 +25,7 @@ class DatabaseProvider extends ChangeNotifier {
     var message = Message(
       content: content,
       uid: FirebaseAuth.instance.currentUser!.uid,
+      userName: FirebaseAuth.instance.currentUser!.displayName ?? "Anònim",
       dateTime: DateTime.now(),
     );
 

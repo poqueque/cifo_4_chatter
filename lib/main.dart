@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_localizations/firebase_ui_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -28,6 +29,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           scaffoldBackgroundColor: AppStyles.columbiaBlue,
+          fontFamily: GoogleFonts.montserrat().fontFamily,
         ),
         home: Splash(),
         supportedLocales: [Locale('es')],
@@ -36,7 +38,6 @@ class MainApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
-          FirebaseUILocalizations.delegate,
         ],
       ),
     );
